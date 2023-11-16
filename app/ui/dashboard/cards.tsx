@@ -3,15 +3,16 @@ import {
   ClockIcon,
   UserGroupIcon,
   InboxIcon,
-} from '@heroicons/react/24/outline';
-import { lusitana } from '@/app/ui/fonts';
+} from '@heroicons/react/24/outline'
+import { lusitana } from '@/app/ui/fonts'
 
 const iconMap = {
   collected: BanknotesIcon,
   customers: UserGroupIcon,
   pending: ClockIcon,
   invoices: InboxIcon,
-};
+}
+
 
 export default async function CardWrapper() {
   return (
@@ -27,19 +28,17 @@ export default async function CardWrapper() {
         type="customers"
       /> */}
     </>
-  );
+  )
 }
 
-export function Card({
-  title,
-  value,
-  type,
-}: {
-  title: string;
-  value: number | string;
-  type: 'invoices' | 'customers' | 'pending' | 'collected';
-}) {
-  const Icon = iconMap[type];
+interface IProps {
+  title: string
+  value: number | string
+  type: 'invoices' | 'customers' | 'pending' | 'collected'
+}
+
+export function Card({ title, value, type}: IProps) {
+  const Icon = iconMap[type]
 
   return (
     <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
@@ -54,5 +53,5 @@ export function Card({
         {value}
       </p>
     </div>
-  );
+  )
 }
