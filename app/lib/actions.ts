@@ -93,9 +93,6 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
 }
 
 export async function deleteInvoice(id: string) {
-   //throw a generic error
-   throw new Error("Something went wrong")
-
    try {
       await sql`DELETE FROM invoices WHERE id = ${id}`
    } catch (error) {
@@ -106,15 +103,12 @@ export async function deleteInvoice(id: string) {
    revalidatePath("/dashboard/invoices")
 }
 
-export async function authenticate(
-   prevState: string | undefined,
-   formData: FormData
-) {
+export async function authenticate(prevState: string | undefined, formData: FormData) {
    try {
-      await signIn('credentials', Object.fromEntries(formData))
+      await signIn("credentials", Object.fromEntries(formData))
    } catch (error) {
-      if ((error as Error).message.includes('CredentialsSignin')) {
-         return 'CredentialsSignin'
+      if ((error as Error).message.includes("CredentialsSignin")) {
+         return "CredentialsSignin"
       }
       throw error
    }
